@@ -3,7 +3,7 @@
 Navigate DocType based on document workflow
 
 ## Set Workflow by adding Custom Script in doctype
-frappe.ui.form.on("<doctype>",{
+frappe.ui.form.on("DocType",{
 	refresh:  function(frm){
 		frappe.call({
 			method:"ess_document_workflow.document_workflow.utils.get_appointment_workflow",
