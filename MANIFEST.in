@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include ess_document_workflow *.css
+recursive-include ess_document_workflow *.csv
+recursive-include ess_document_workflow *.html
+recursive-include ess_document_workflow *.ico
+recursive-include ess_document_workflow *.js
+recursive-include ess_document_workflow *.json
+recursive-include ess_document_workflow *.md
+recursive-include ess_document_workflow *.png
+recursive-include ess_document_workflow *.py
+recursive-include ess_document_workflow *.svg
+recursive-include ess_document_workflow *.txt
+recursive-exclude ess_document_workflow *.pyc
