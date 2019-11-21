@@ -11,6 +11,9 @@ app_color = "grey"
 app_email = "info@earthiansliv.com"
 app_license = "MIT"
 
+fixtures = [{"dt":"Custom Field", "filters": [["fieldname", "in",("nav_appointment_workflow_section_break",
+	"nav_appointment_workflow")]]}, {"dt":"Custom Script", "filters": [["dt", "in",("Appointment Type")]]}]
+
 # Includes in <head>
 # ------------------
 
@@ -119,4 +122,3 @@ app_license = "MIT"
 # override_whitelisted_methods = {
 # 	"frappe.desk.doctype.event.event.get_events": "ess_document_workflow.event.get_events"
 # }
-

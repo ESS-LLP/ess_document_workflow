@@ -1,0 +1,14 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Custom Script",
+  "dt": "Appointment Type",
+  "modified": "2019-11-21 16:56:03.607932",
+  "name": "Appointment Type-Client",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "script": "frappe.ui.form.on(\"Appointment Type\",{\n\trefresh:  function(frm){\n\t\tfrm.set_query(\"workflow_doctype\", \"nav_appointment_workflow\", function() {\n\t\t\treturn {\n\t\t\t\tfilters: {\n\t\t\t\t\tmodule:['in',['Healthcare']]\n\t\t\t\t}\n\t\t\t};\n\t\t});\n\t}\n});\n\nfrappe.ui.form.on(\"Healthcare Appointment Workflow\",{\n\tworkflow_doctype:  function(frm, cdt, cdn){\n\t\tset_fieldname_for_child(frm, cdt, cdn);\n\t}\n});\n\nvar set_fieldname_for_child = function(frm, cdt, cdn) {\n\tvar child = locals[cdt][cdn];\n\tvar fieldname = '';\n\tfrappe.model.with_doctype(child.workflow_doctype, function() {\n\t\tvar meta = frappe.get_meta(child.workflow_doctype);\n\t\tfieldname = meta.fields.filter(df =>\n\t\t\tdf.options == \"Patient Appointment\"\n\t\t).map(df => df.fieldname);\n\t\tif(fieldname.length > 0){\n\t\t\tfrappe.model.set_value(cdt, cdn, \"appointment_field\", fieldname[0]);\n\t\t}\n\t\telse{\n\t\t\tfrappe.model.set_value(cdt, cdn, \"appointment_field\", \"\");\n\t\t\tfrappe.throw(__(\"DocType {0} do not have a Link to Patient Appointment, remove or change the value for DocType\", [child.workflow_doctype]))\n\t\t}\n\t});\n};\n",
+  "script_type": "Client"
+ }
+]
