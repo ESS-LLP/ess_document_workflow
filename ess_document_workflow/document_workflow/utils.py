@@ -21,7 +21,8 @@ def doc_for_appoitnment(dt_from_appointment, appointment):
 	dn_from_appointment = frappe.db.exists(
 		dt_from_appointment,
 		{
-			"appointment": appointment
+			"appointment": appointment,
+			"docstatus": ["<", 2]
 		}
 	)
 	if dn_from_appointment:
